@@ -40,21 +40,17 @@ def signin():
             password = form.password.data
             print(email,password)
 
-            # Query user table for users with this info 
             logged_user = User.query.filter(User.email == email).first()
-            # Check if logged_user and password == password 
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('You were successfully logged in', 'auth-success')
+                flash('You were successfully logged in: Via Email/Password', 'auth-success')
                 return redirect(url_for('site.profile'))
             else:
-                flash('Your Email/Password is incorrect.', 'auth-failed')
+                flash('Your Email/Password is incorrect', 'auth-failed')
                 return redirect(url_for('auth.signin'))
-
     except:
-        raise Exception('Invalid Form Data: Please check your form.')
-
-    return render_template('signin.html', form = form)
+        raise Exception('Invalid Form Data: Please Check Your Form')
+    return render_template('signin.html', form=form)
 
 @auth.route('/logout')
 @login_required
