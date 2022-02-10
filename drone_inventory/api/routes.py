@@ -84,4 +84,3 @@ def delete_drone(current_user_token, id):
 
     response = drone_schema.dump(drone)
     return jsonify(response)
-
