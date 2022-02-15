@@ -1,4 +1,3 @@
-/* Nav Style  */
 .ct-nav{
     display: flex;
     justify-content: space-between;
@@ -18,10 +17,10 @@ ul#horizontal-list{
 }
 
 ul#horizontal-list li, ul#horizontal-list a{
-    display: inline;
-    text-decoration: none;
+    display:inline;
+    text-decoration:none;
     padding: 0.5vw;
-    color: black;
+    color:black;
 }
 
 ul#horizontal-list a:nth-last-child(1){
@@ -29,7 +28,8 @@ ul#horizontal-list a:nth-last-child(1){
     border-radius: 11px;
     margin-right: 0.2vw;
 }
-/* End of Navbar styles  */
+
+/* end of navbar */
 
 /* Start of Hero/Header Section */
 
@@ -42,7 +42,7 @@ ul#horizontal-list a:nth-last-child(1){
     max-width: 100%;
 }
 
-/* End of Hero/Header Section  */
+/* end of hero/header section */
 
 /* Start of Middle Section Styles */
 #middle-text{
@@ -53,9 +53,10 @@ ul#horizontal-list a:nth-last-child(1){
 #middle-text h2{
     padding: 1.5vw;
 }
-/* End of Middle Section Styles */
 
-/* Start of Features Section Styles */
+/* end of middle section */
+
+/* start of features section styles */
 
 #api-image, #graphql-image, #database-image{
     margin-bottom: 10vh;
@@ -64,22 +65,25 @@ ul#horizontal-list a:nth-last-child(1){
 #features-section{
     margin: 8vw;
 }
-/* End of Features Section Styles */
 
-/* Start of Community Section Styles */
+/* end of features section */
+
+/* start of community section */
 
 #drone-image{
     width: 50%;
     max-width: 75%;
     margin-left: 3vw;
 }
-/* End of Community Section Styles */
 
-/* Start of Footer Section */
+/* end of the community section */
+
+/* footer section */
+
 .footer-text-flex{
     display: flex;
     flex-direction: column;
-    margin-top: 3vw;
+    margin-top: 3 vw;
 }
 
 #footer-logo{
@@ -91,17 +95,16 @@ ul#horizontal-list a:nth-last-child(1){
     border-top: 3px solid black;
     margin-top: 20vh;
 }
-/* End of Community Section Styles */
 
-/* Profile Styles */
+/* profile styles */
 
 .hero-section{
-    height: 95vh;
+    height:95vh;
     background-image: linear-gradient(to right bottom, rgba(30, 115, 172, 0.7), rgba(142, 57, 153, 0.6)), url(../images/drone-profile.jpg);
     background-size: cover;
     background-position: 35% 50%;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    clip-path: polygon(0 0,100% 0, 100% 80vh, 0 100%);
     position: relative;
 }
 

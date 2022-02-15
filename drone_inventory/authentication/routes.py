@@ -1,22 +1,22 @@
 # package imports
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, logout_user, current_user, login_required
 
-# project file imports
+# project files imports
 from drone_inventory.forms import UserLoginForm
 from drone_inventory.models import User, db, check_password_hash
 
-auth = Blueprint('auth', __name__, template_folder ='auth_templates')
+auth = Blueprint('auth', __name__, template_folder = 'auth_templates')
 
 @auth.route('/signup', methods = ['GET', 'POST'])
 def signup():
     form = UserLoginForm()
-
+    
     try:
         if request.method == 'POST' and form.validate_on_submit():
             email = form.email.data
             password = form.password.data
-            print(email,password)
+            print(email, password)
 
             # Add User into Database
             user = User(email, password = password)
@@ -27,8 +27,9 @@ def signup():
             return redirect(url_for('auth.signin'))
     except:
         raise Exception('Invalid Form Data: Please check your form.')
-
     return render_template('signup.html', form = form)
+
+
 
 @auth.route('/signin', methods = ['GET', 'POST'])
 def signin():
@@ -38,19 +39,22 @@ def signin():
         if request.method == 'POST' and form.validate_on_submit():
             email = form.email.data
             password = form.password.data
-            print(email,password)
+            print(email, password)
 
+            # Query user table for users with this info
             logged_user = User.query.filter(User.email == email).first()
+            # Check if logged_user and password == password
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
-                flash('You were successfully logged in: Via Email/Password', 'auth-success')
+                flash('You were successfully logged in', 'auth-success')
                 return redirect(url_for('site.profile'))
             else:
-                flash('Your Email/Password is incorrect', 'auth-failed')
+                flash('Your Email/Password is incorrect.','auth-failed')
                 return redirect(url_for('auth.signin'))
     except:
-        raise Exception('Invalid Form Data: Please Check Your Form')
-    return render_template('signin.html', form=form)
+        raise Exception('Invalid Form Data: Please check your form.')
+    
+    return render_template('signin.html', form = form)
 
 @auth.route('/logout')
 @login_required
